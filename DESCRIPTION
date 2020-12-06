@@ -1,4 +1,4 @@
-Package: LRcellMarkers
+Package: LRcellTypeMarkers
 Type: Package
 Title: Marker gene information for LRcell R Bioconductor package.
 Version: 0.99.0
@@ -8,13 +8,14 @@ Authors@R: person("Wenjing", "Ma",
          role=c("cre", "aut"),
          comment = c(ORCID = "0000-0001-8757-651X"))
 Maintainer: Wenjing Ma <wenjing.ma@emory.edu>
-BugReports: https://github.com/marvinquiet/LRcell/issues
-GitURL: https://github.com/marvinquiet/LRcell
-Description: This is an external data package for LRcell, which is used to 
-  identify specific sub-cell types that drives the changes observed in a bulk 
-  RNA-seq differential gene expression experiment. This data package contains 
-  the gene enrichment scores calculated from scRNA-seq dataset which indicates 
-  the gene enrichment of each cell type in certain brain region.
+BugReports: https://github.com/marvinquiet/LRcellTypeMarkers/issues
+GitURL: https://github.com/marvinquiet/LRcellTypeMarkers
+Description: This is an external ExperimentData package for LRcell. This data 
+  package contains the gene enrichment scores calculated from scRNA-seq dataset 
+  which indicates the gene enrichment of each cell type in certain brain region.
+  LRcell package is used to identify specific sub-cell types that drives the 
+  changes observed in a bulk RNA-seq differential gene expression experiment.
+  For more details, please visit: https://github.com/marvinquiet/LRcell.
 License: MIT + file LICENSE
 Encoding: UTF-8
 biocViews: ExperimentData, ExperimentHub

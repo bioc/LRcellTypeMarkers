@@ -1,8 +1,7 @@
 ###------ brain metadata
-
 ## Mouse brain data (FC, CB, ENT, GP, PC, STR, SN, TH, HC)
 MOUSE_BRAIN_DATANUM <- 9
-MOUSE_BRAIN_DATAURL <- "https://github.com/marvinquiet/LRcell/tree/master/R"
+MOUSE_BRAIN_DATAURL <- "https://github.com/marvinquiet/LRcell/"
 #MOUSE_BRAIN_DATAURL <- NA
 mouse_brain_meta <- data.frame(
     Title = c("Mouse Frontal Cortex Marker Genes",
@@ -35,17 +34,17 @@ mouse_brain_meta <- data.frame(
     Coordinate_1_based = rep(TRUE, MOUSE_BRAIN_DATANUM),
     DataProvider = rep("Emory University", MOUSE_BRAIN_DATANUM),
     Maintainer = rep("Wenjing Ma <wenjing.ma@emory.edu>", MOUSE_BRAIN_DATANUM),
-    RDataClass = rep("Named Vector", MOUSE_BRAIN_DATANUM),
+    RDataClass = rep("List", MOUSE_BRAIN_DATANUM),
     DispatchClass = rep("RDS", MOUSE_BRAIN_DATANUM),
-    RDataPath = c("LRcellMarker/marker_genes_lib/mouse/FCenriched_genes.RDS",
-                  "LRcellMarker/marker_genes_lib/mouse/CBenriched_genes.RDS",
-                  "LRcellMarker/marker_genes_lib/mouse/ENTenriched_genes.RDS",
-                  "LRcellMarker/marker_genes_lib/mouse/GPenriched_genes.RDS",
-                  "LRcellMarker/marker_genes_lib/mouse/PCenriched_genes.RDS",
-                  "LRcellMarker/marker_genes_lib/mouse/STRenriched_genes.RDS",
-                  "LRcellMarker/marker_genes_lib/mouse/SNenriched_genes.RDS",
-                  "LRcellMarker/marker_genes_lib/mouse/THenriched_genes.RDS",
-                  "LRcellMarker/marker_genes_lib/mouse/HCenriched_genes.RDS"
+    RDataPath = c("LRcellTypeMarkers/marker_genes_lib/mouse/FCenriched_genes.RDS",
+                  "LRcellTypeMarkers/marker_genes_lib/mouse/CBenriched_genes.RDS",
+                  "LRcellTypeMarkers/marker_genes_lib/mouse/ENTenriched_genes.RDS",
+                  "LRcellTypeMarkers/marker_genes_lib/mouse/GPenriched_genes.RDS",
+                  "LRcellTypeMarkers/marker_genes_lib/mouse/PCenriched_genes.RDS",
+                  "LRcellTypeMarkers/marker_genes_lib/mouse/STRenriched_genes.RDS",
+                  "LRcellTypeMarkers/marker_genes_lib/mouse/SNenriched_genes.RDS",
+                  "LRcellTypeMarkers/marker_genes_lib/mouse/THenriched_genes.RDS",
+                  "LRcellTypeMarkers/marker_genes_lib/mouse/HCenriched_genes.RDS"
                   ),
     Tags = c("LRcellMarker_Mouse_FC",
              "LRcellMarker_Mouse_CB",
@@ -60,7 +59,7 @@ mouse_brain_meta <- data.frame(
 
 ## Human brain data (pFC)
 HUMAN_BRAIN_DATANUM <- 1
-HUMAN_BRIAN_DATAURL <- "https://github.com/marvinquiet/LRcell/tree/master/R"
+HUMAN_BRIAN_DATAURL <- "https://github.com/marvinquiet/LRcell/"
 human_brain_meta <- data.frame(
     Title = c("Human pre-Frontal Cortex Marker Genes"),
     Description = c("Gene enrichment scores calculated from Human pre-Frontal Cortex scRNA-seq data"),
@@ -74,9 +73,9 @@ human_brain_meta <- data.frame(
     Coordinate_1_based = rep(TRUE, HUMAN_BRAIN_DATANUM),
     DataProvider = rep("Emory University", HUMAN_BRAIN_DATANUM),
     Maintainer = rep("Wenjing Ma <wenjing.ma@emory.edu>", HUMAN_BRAIN_DATANUM),
-    RDataClass = rep("Named Vector", HUMAN_BRAIN_DATANUM),
+    RDataClass = rep("List", HUMAN_BRAIN_DATANUM),
     DispatchClass = rep("RDS", HUMAN_BRAIN_DATANUM),
-    RDataPath = c("LRcellMarker/marker_genes_lib/human/pFCenriched_genes.RDS"),
+    RDataPath = c("LRcellTypeMarkers/marker_genes_lib/human/pFCenriched_genes.RDS"),
     Tags = c("LRcellMarker_Human_pFC")
 )
 
