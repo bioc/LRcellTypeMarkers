@@ -1,8 +1,7 @@
 ###------ brain metadata
 ## Mouse brain data (FC, CB, ENT, GP, PC, STR, SN, TH, HC)
 MOUSE_BRAIN_DATANUM <- 9
-MOUSE_BRAIN_DATAURL <- "https://github.com/marvinquiet/LRcell/"
-#MOUSE_BRAIN_DATAURL <- NA
+MOUSE_BRAIN_DATAURL <- "http://dropviz.org/"
 mouse_brain_meta <- data.frame(
     Title = c("Mouse Frontal Cortex Marker Genes",
               "Mouse Cerebellum Marker Genes",
@@ -26,7 +25,7 @@ mouse_brain_meta <- data.frame(
                     ),
     BiocVersion = rep("3.13.0", MOUSE_BRAIN_DATANUM),
     Genome = rep("GRCm38", MOUSE_BRAIN_DATANUM),
-    SourceType = rep("RData", MOUSE_BRAIN_DATANUM),
+    SourceType = rep("TXT", MOUSE_BRAIN_DATANUM),
     SourceUrl = rep(MOUSE_BRAIN_DATAURL, MOUSE_BRAIN_DATANUM),
     SourceVersion = rep("1.0.0", MOUSE_BRAIN_DATANUM),
     Species = rep("Mus musculus", MOUSE_BRAIN_DATANUM),
@@ -34,7 +33,7 @@ mouse_brain_meta <- data.frame(
     Coordinate_1_based = rep(TRUE, MOUSE_BRAIN_DATANUM),
     DataProvider = rep("Emory University", MOUSE_BRAIN_DATANUM),
     Maintainer = rep("Wenjing Ma <wenjing.ma@emory.edu>", MOUSE_BRAIN_DATANUM),
-    RDataClass = rep("List", MOUSE_BRAIN_DATANUM),
+    RDataClass = rep("Matrix", MOUSE_BRAIN_DATANUM),
     DispatchClass = rep("RDS", MOUSE_BRAIN_DATANUM),
     RDataPath = c("LRcellTypeMarkers/marker_genes_lib/mouse/FCenriched_genes.RDS",
                   "LRcellTypeMarkers/marker_genes_lib/mouse/CBenriched_genes.RDS",
@@ -59,13 +58,13 @@ mouse_brain_meta <- data.frame(
 
 ## Human brain data (pFC)
 HUMAN_BRAIN_DATANUM <- 1
-HUMAN_BRIAN_DATAURL <- "https://github.com/marvinquiet/LRcell/"
+HUMAN_BRIAN_DATAURL <- "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE144136"
 human_brain_meta <- data.frame(
     Title = c("Human pre-Frontal Cortex Marker Genes"),
     Description = c("Gene enrichment scores calculated from Human pre-Frontal Cortex scRNA-seq data"),
     BiocVersion = rep("3.13.0", HUMAN_BRAIN_DATANUM),
     Genome = rep("GRCh38", HUMAN_BRAIN_DATANUM),
-    SourceType = rep("RData", HUMAN_BRAIN_DATANUM),
+    SourceType = rep("CSV", HUMAN_BRAIN_DATANUM),
     SourceUrl = rep(HUMAN_BRIAN_DATAURL, HUMAN_BRAIN_DATANUM),
     SourceVersion = rep("1.0.0", HUMAN_BRAIN_DATANUM),
     Species = rep("Homo sapiens", HUMAN_BRAIN_DATANUM),
@@ -73,7 +72,7 @@ human_brain_meta <- data.frame(
     Coordinate_1_based = rep(TRUE, HUMAN_BRAIN_DATANUM),
     DataProvider = rep("Emory University", HUMAN_BRAIN_DATANUM),
     Maintainer = rep("Wenjing Ma <wenjing.ma@emory.edu>", HUMAN_BRAIN_DATANUM),
-    RDataClass = rep("List", HUMAN_BRAIN_DATANUM),
+    RDataClass = rep("Matrix", HUMAN_BRAIN_DATANUM),
     DispatchClass = rep("RDS", HUMAN_BRAIN_DATANUM),
     RDataPath = c("LRcellTypeMarkers/marker_genes_lib/human/pFCenriched_genes.RDS"),
     Tags = c("LRcellMarker_Human_pFC")
