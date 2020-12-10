@@ -1,0 +1,67 @@
+---
+title: "LRcellTypeMarkers: Marker gene information for LRcell R Bioconductor package using Bioconductor's ExperimentHub"
+author: "Wenjing Ma"
+date: "`r doc_date()`"
+bibliography: library.bib
+vignette: >
+  %\VignetteIndexEntry{LRcellTypeMarkers: Marker gene information for LRcell R Bioconductor package using Bioconductor's ExperimentHub}
+  %\VignetteEngine{knitr::rmarkdown}
+output: 
+  BiocStyle::html_document
+---
+
+# Download cell-type specific marker gene information
+
+LRcellTypeMarkers currently provides gene enrichment scores for mouse whole brain
+and human prefrontal cortex. These gene enrichment scores were calculated
+using the algorithm proposed in [@marques2016oligodendrocyte]. The detailed 
+procedures are described in `scripts/make-data.R`. Users are encouraged
+to download the data, generate customized cell-type specific marker genes and
+apply it in on bulk DE genes using [LRcell](https://github.com/marvinquiet/LRcell). 
+
+The example below shows how to download the data using ExperimentHub.
+
+```{r intro}
+library(ExperimentHub)
+eh = ExperimentHub()
+query(eh, "LRcellTypeMarkers")
+```
+
+According to the description, users can choose the most suitable marker gene
+information for further analysis. Here, we used mouse frontal cortex marker genes
+as an example, which has the title as **EH4548**.
+```{r extract_data}
+mouse_FC <- eh[['EH4548']]
+mouse_FC[1:6, 1:6]  # show head of the data
+```
+
+From the data, we can observe that the rows are gene symbols and the columns are 
+the sub-cell types (or clusters). The values indicate the gene enrichment level 
+in a sub-cell type (or cluster). Higher the values are, more unique the genes 
+are in the certain cell types. Users can sort the enrichment score in a 
+descending order and select top 100 genes for each sub-cell type (or cluster) 
+using the following command or the function named `get_markergenes()` in LRcell.
+
+Here, we take a glance at the first 6 clusters and the first 6 marker genes in 
+each cluster.
+
+```{r sort}
+FC_marker_genes <- list()
+
+for (cluster in colnames(mouse_FC)) {
+  enriched_values <- as.numeric(mouse_FC[, cluster])
+  names(enriched_values) <- rownames(mouse_FC)
+  sorted_enriched_genes <- sort(enriched_values, decreasing = TRUE)
+  FC_marker_genes[[cluster]] <- head(names(sorted_enriched_genes), n=100)
+}
+
+head(lapply(FC_marker_genes, head))  # glance at the marker genes
+```
+
+For further usage in LRcell, please check [LRcell Tutorial](https://github.com/marvinquiet/LRcell).
+
+# sessionInfo()
+
+```{r sessionInfo}
+sessionInfo()
+```
