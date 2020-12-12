@@ -7,7 +7,6 @@ Authors@R: person("Wenjing", "Ma",
          email="wenjing.ma@emory.edu", 
          role=c("cre", "aut"),
          comment = c(ORCID = "0000-0001-8757-651X"))
-Maintainer: Wenjing Ma <wenjing.ma@emory.edu>
 BugReports: https://github.com/marvinquiet/LRcellTypeMarkers/issues
 GitURL: https://github.com/marvinquiet/LRcellTypeMarkers
 Description: This is an external ExperimentData package for LRcell. This data 
@@ -18,9 +17,9 @@ Description: This is an external ExperimentData package for LRcell. This data
   For more details, please visit: https://github.com/marvinquiet/LRcell.
 License: MIT + file LICENSE
 Encoding: UTF-8
-biocViews: ExperimentData, ExperimentHub
+biocViews: ExperimentData, ExperimentHub, RNASeqData, SingleCellData, ExpressionData, PackageTypeData
 Depends:
-    R (>= 3.6)
+    R (>= 4.1)
 Imports: 
     ExperimentHub
 Suggests: 
