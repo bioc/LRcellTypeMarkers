@@ -1,7 +1,7 @@
 Package: LRcellTypeMarkers
 Type: Package
 Title: Marker gene information for LRcell R Bioconductor package
-Version: 0.99.0
+Version: 0.99.1
 Date: 2020-11-24
 Authors@R: person("Wenjing", "Ma", 
          email="wenjing.ma@emory.edu", 
