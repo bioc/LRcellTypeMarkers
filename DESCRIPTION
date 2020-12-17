@@ -19,7 +19,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 biocViews: ExperimentData, ExperimentHub, RNASeqData, SingleCellData, ExpressionData, PackageTypeData
 Depends:
-    R (>= 4.1)
+    R (>= 3.6)
 Imports: 
     ExperimentHub
 Suggests: 
