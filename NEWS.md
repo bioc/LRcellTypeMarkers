@@ -6,3 +6,8 @@
 # LRcellTypeMarkers 0.99.1
 - change dependency to R >=3.6
 ---
+
+# LRcellTypeMarkers 0.99.2
+- change dependency back to R >=4.1
+- R>=3.6 triggers warning
+---
