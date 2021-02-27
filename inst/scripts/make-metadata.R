@@ -78,9 +78,32 @@ human_brain_meta <- data.frame(
     Tags = c("LRcellMarker_Human_pFC")
 )
 
-meta <- rbind(mouse_brain_meta, human_brain_meta)
+## Human PBMC data (PBMC)
+HUMAN_PBMC_DATANUM <- 1
+HUMAN_PBMC_DATAURL <- "https://atlas.fredhutch.org/data/nygc/multimodal/pbmc_multimodal.h5seurat"
+human_pbmc_meta <- data.frame(
+    Title = c("Human PBMC Marker Genes"),
+    Description = c("Gene enrichment scores calculated from Human PBMC scRNA-seq data"),
+    BiocVersion = rep("3.13.0", HUMAN_PBMC_DATANUM),
+    Genome = rep("GRCh38", HUMAN_PBMC_DATANUM),
+    SourceType = rep("HDF5", HUMAN_PBMC_DATANUM),
+    SourceUrl = rep(HUMAN_PBMC_DATAURL, HUMAN_PBMC_DATANUM),
+    SourceVersion = rep("1.0.0", HUMAN_PBMC_DATANUM),
+    Species = rep("Homo sapiens", HUMAN_PBMC_DATANUM),
+    TaxonomyId = rep(9606, HUMAN_PBMC_DATANUM),
+    Coordinate_1_based = rep(TRUE, HUMAN_PBMC_DATANUM),
+    DataProvider = rep("Emory University", HUMAN_PBMC_DATANUM),
+    Maintainer = rep("Wenjing Ma <wenjing.ma@emory.edu>", HUMAN_PBMC_DATANUM),
+    RDataClass = rep("Matrix", HUMAN_PBMC_DATANUM),
+    DispatchClass = rep("RDS", HUMAN_PBMC_DATANUM),
+    RDataPath = c("LRcellTypeMarkers/marker_genes_lib/human/PBMCenriched_genes.RDS"),
+    Tags = c("LRcellMarker_Human_PBMC")
+)
+
+
+meta <- rbind(mouse_brain_meta, human_brain_meta, human_pbmc_meta)
 write.csv(meta, file="inst/extdata/metadata.csv", row.names=FALSE)
 
 ## Test with ExperimentHub
-# ExperimentHubData::makeExperimentHubMetadata(getwd(), fileName = "metadata.csv")
+#ExperimentHubData::makeExperimentHubMetadata(getwd(), fileName = "metadata.csv")
 

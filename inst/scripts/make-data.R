@@ -12,8 +12,9 @@
 # 3. Only cells with annotation are remained in the read count matrix.
 # 4. Common genes (15,976) among all 9 brain regions are remained in the read
 #    count matrix.
-# 5. Enriched gene scores are then calculated using the processed read count matrix
-#    for each brain region.
+# 4. The filtered read count matrix of each brain region is scaled by size factor
+#   and log-transformed.
+# 5. Enriched gene scores are calculated.
 
 # --- The human brain data
 # 1. Read count matrix was downloaded from GSE144136:
@@ -22,5 +23,18 @@
 #    'Mix_2', 'Mix_3', 'Mix_4', 'Mix_5', 'Inhib_4_SST' were excluded in the
 #     analysisaccording to paper.
 # 3. Genes expressed in less than 10 cells are filtered; Cells having less
-#    than 10 read counts are filtered
-# 4. Enriched gene scores are then calculated using the processed read count matrix.
+#    than 10 read counts are filtered.
+# 4. The filtered read count matrix are scaled by size factor and log-transformed.
+# 5. Enriched gene scores are calculated.
+
+# --- The human PBMC data
+# 1. Seurat object was downloaded from Seurat 4.0 website:
+#   https://atlas.fredhutch.org/data/nygc/multimodal/pbmc_multimodal.h5seurat
+# 2. Cell annotation was directly fetched from the metadata of Seurat object.
+# 3. Cells from timepoint 0 are extracted out which results in 53,364 cells.
+#   Furthermore, doublets are removed remaining 53,144 cells. Mitochondria genes
+#   and Ribosomal genes are filtered out first and genes expressed in less than
+#   1,000 cells are removed.
+# 4. The filtered read count matrix are scaled by size factor and log-transformed.
+# 5. Enriched gene scores are calculated.
+

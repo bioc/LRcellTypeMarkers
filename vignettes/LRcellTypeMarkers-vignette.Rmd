@@ -23,13 +23,15 @@ The example below shows how to download the data using ExperimentHub.
 
 ```{r intro}
 library(ExperimentHub)
-eh = ExperimentHub()
-query(eh, "LRcellTypeMarkers")
+eh <- ExperimentHub()
+eh <- query(eh, "LRcellTypeMarkers")
+eh ## show entries of LRcellTypeMarkers package
 ```
 
 According to the description, users can choose the most suitable marker gene
 information for further analysis. Here, we used mouse frontal cortex marker genes
 as an example, which has the title as **EH4548**.
+
 ```{r extract_data}
 mouse_FC <- eh[['EH4548']]
 mouse_FC[1:6, 1:6]  # show head of the data
@@ -46,19 +48,47 @@ Here, we take a glance at the first 6 clusters and the first 6 marker genes in
 each cluster.
 
 ```{r sort}
-FC_marker_genes <- list()
-
-for (cluster in colnames(mouse_FC)) {
-  enriched_values <- as.numeric(mouse_FC[, cluster])
-  names(enriched_values) <- rownames(mouse_FC)
-  sorted_enriched_genes <- sort(enriched_values, decreasing = TRUE)
-  FC_marker_genes[[cluster]] <- head(names(sorted_enriched_genes), n=100)
-}
-
+library(LRcell)
+FC_marker_genes <- get_markergenes(mouse_FC, method="LR", topn=100)
 head(lapply(FC_marker_genes, head))  # glance at the marker genes
 ```
 
-For further usage in LRcell, please check [LRcell Tutorial](https://github.com/marvinquiet/LRcell).
+# Usage of cell-type specific markers
+LRcellTypeMarkers package is a data source for running LRcell analysis which 
+identifies (sub-)cell types are transcriptionally enriched in bulk differentially
+expressed genes (DEGs) experiments. Here, we demonstrate an example on using provided
+mouse brain Frontal Cortex marker genes on Alzheimer's Disease (AD) to identify Microglia.
+
+First, we load the sample bulk DEGs vector provided by LRcell package which 
+contrasts AD mice with wild type mouse at the timepoint of 6 months. The names 
+of the vector are the genes and values are the p-value calculated from DESeq2.
+
+```{r load_example}
+library(LRcell)
+data("example_gene_pvals")
+head(example_gene_pvals, n=5)
+```
+
+Then, we applied LRcell analysis on this DEG list using the FC marker genes we just
+acquired from the last section. Please note that the method for acquiring marker genes
+and running LRcell should be the same.
+
+```{r run_LRcell}
+res <- LRcellCore(gene.p = example_gene_pvals,
+           marker.g = FC_marker_genes,
+           method = "LR", min.size = 5, 
+           sig.cutoff = 0.05)
+## curate cell types
+res$cell_type <- unlist(lapply(strsplit(res$ID, '\\.'), '[', 2))
+head(subset(res, select=-lead_genes))
+```
+
+Plot out the result using a function provided by LRcell:
+```{r plot_LRcellCore, fig.width=10, fig.height=6, dpi=120} 
+plot_manhattan_enrich(res, sig.cutoff = .05, label.topn = 5)
+```
+
+For further usage of LRcell, please check [LRcell Tutorial](https://github.com/marvinquiet/LRcell).
 
 # sessionInfo()
 
