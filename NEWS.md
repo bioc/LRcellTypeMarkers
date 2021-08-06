@@ -1,6 +1,12 @@
+# LRcellTypeMarkers 0.99.4
+- Add MSigDB datasets
+- Add note in vignettes
+---
+
 # LRcellTypeMarkers 0.99.3
 - Add human PBMC data
 - Add LRcell related information in vignettes
+---
 
 
 # LRcellTypeMarkers 0.99.2

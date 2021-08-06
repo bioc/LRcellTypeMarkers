@@ -53,6 +53,9 @@ FC_marker_genes <- get_markergenes(mouse_FC, method="LR", topn=100)
 head(lapply(FC_marker_genes, head))  # glance at the marker genes
 ```
 
+**Note**: For MSigDB C8 datasets, the marker genes are only available for 
+Logistic Regression (LR) analysis. 
+
 # Usage of cell-type specific markers
 LRcellTypeMarkers package is a data source for running LRcell analysis which 
 identifies (sub-)cell types are transcriptionally enriched in bulk differentially

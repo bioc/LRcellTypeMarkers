@@ -38,3 +38,15 @@
 # 4. The filtered read count matrix are scaled by size factor and log-transformed.
 # 5. Enriched gene scores are calculated.
 
+# --- The MSigDB data
+# 1. MSigDB marker genes were downloaded from MSigDB C8:
+#    https://www.gsea-msigdb.org/gsea/msigdb/genesets.jsp?collection=C8
+# 2. We select marker genes with following criterias
+#    (1) non-fetal tissues;
+#    (2) have more than 8 (sub-) cell types;
+#    (3) have minimum number of marker genes greater than 50;
+#    (4) have median number of marker genes greater than 80.
+# 3. In the end, four tissue types remained: midbrain, cord blood, ovary and skeletal muscle
+# 4. Note: since MSigDB markers are only gene symbols, the markers can only be
+#    used under Logistic Regression (LR) mode
+

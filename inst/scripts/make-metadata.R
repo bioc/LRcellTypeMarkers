@@ -100,8 +100,42 @@ human_pbmc_meta <- data.frame(
     Tags = c("LRcellMarker_Human_PBMC")
 )
 
+## MSigDB C8 data
+MSigDB_DATANUM <- 4
+MSigDB_DATAURL <- "https://www.gsea-msigdb.org/gsea/msigdb/genesets.jsp?collection=C8"
+MSigDB_meta <- data.frame(
+    Title = c("MSigDB C8 MANNO MIDBRAIN",
+              "MSigDB C8 ZHENG CORD BLOOD",
+              "MSigDB C8 FAN OVARY",
+              "MSigDB C8 RUBENSTEIN SKELETAL MUSCLE"),
+    Description = c("Marker genes selected from MSigDB C8 MANNO MIDBRAIN",
+                    "Marker genes selected from MSigDB C8 ZHENG CORD BLOOD",
+                    "Marker genes selected from MSigDB C8 FAN OVARY",
+                    "Marker genes selected from MSigDB C8 RUBENSTEIN SKELETAL MUSCLE"),
+    BiocVersion = rep("3.13.0", MSigDB_DATANUM),
+    Genome = rep("GRCh38", MSigDB_DATANUM),
+    SourceType = rep("tab", MSigDB_DATANUM),
+    SourceUrl = rep(MSigDB_DATAURL, MSigDB_DATANUM),
+    SourceVersion = rep("1.0.0", MSigDB_DATANUM),
+    Species = rep("Homo sapiens", MSigDB_DATANUM),
+    TaxonomyId = rep(9606, MSigDB_DATANUM),
+    Coordinate_1_based = rep(TRUE, MSigDB_DATANUM),
+    DataProvider = rep("Emory University", MSigDB_DATANUM),
+    Maintainer = rep("Wenjing Ma <wenjing.ma@emory.edu>", MSigDB_DATANUM),
+    RDataClass = rep("list", MSigDB_DATANUM),
+    DispatchClass = rep("RDS", MSigDB_DATANUM),
+    RDataPath = c("LRcellTypeMarkers/marker_genes_lib/human/MSigDB_C8_MANNO_MIDBRAIN.RDS",
+                  "LRcellTypeMarkers/marker_genes_lib/human/MSigDB_C8_ZHENG_CORD_BLOOD.RDS",
+                  "LRcellTypeMarkers/marker_genes_lib/human/MSigDB_C8_FAN_OVARY.RDS",
+                  "LRcellTypeMarkers/marker_genes_lib/human/MSigDB_C8_RUBENSTEIN_SKELETAL_MUSCLE.RDS"),
+    Tags = c("LRcellMarker_MSigDB_MIDBRAIN",
+             "LRcellMarker_MSigDB_CORD_BLOOD",
+             "LRcellMarker_MSigDB_OVARY",
+             "LRcellMarker_MSigDB_SKELETAL_MUSCLE")
+)
 
-meta <- rbind(mouse_brain_meta, human_brain_meta, human_pbmc_meta)
+
+meta <- rbind(mouse_brain_meta, human_brain_meta, human_pbmc_meta, MSigDB_meta)
 write.csv(meta, file="inst/extdata/metadata.csv", row.names=FALSE)
 
 ## Test with ExperimentHub
