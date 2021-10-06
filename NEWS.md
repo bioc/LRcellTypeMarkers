@@ -1,4 +1,4 @@
-# LRcellTypeMarkers 1.1.1 (after Bioc 3.13 release)
+# LRcellTypeMarkers 1.1.1
 - Add MSigDB datasets
 - Add note in vignettes
 ---
